@@ -15,6 +15,8 @@ frames_VFI/
 frames512/
 Uformer/datasets/
 Uformer/results/
+VCGAN/img/
+VFI-with-AdaCoF/gif
 
 *.mp4
 *.pt
