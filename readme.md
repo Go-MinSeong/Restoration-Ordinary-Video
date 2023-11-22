@@ -1,22 +1,34 @@
+<div align="center">
+
 # <span style="color: #ff953e"> Restoration Antique Movie
 
 **Project Duration [ 2023.11 ]**
 
+</div>
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<div align="center">
 
 ## <span style="color: #ff953e"> **Objective**
 
-- 옛날 영상을 고품질의 영상으로 변환한다
 
-    Convert old footage into high-quality video
+**옛날 영상을 고품질의 영상으로 변환한다**
+
+**Convert old footage into high-quality video**
   
-- 부모님 결혼식 영상을 현대화하여 선물하기
+  **부모님 결혼식 영상을 현대화하여 선물하기**
   
-    Modernize and gift your parents' wedding video
+**Modernize and gift your parents' wedding video**
+
+</div>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<div align="center">
+
 
 ## <span style="color: #ff953e"> **Contribution**
+
+</div>
 
 - 사실 어머니의 생신을 맞이하여 한 프로젝트이기에, 부모님이 좋아하실 것으로 예상된다.
   
@@ -31,9 +43,11 @@
     For Video Frame Interpolation, you get a sense of accomplishment by using it with your own model.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<div align="center">
 
 ## <span style="color: #ff953e"> **Process**
 
+</div>
 각 기술들의 간단한 원리와 출처를 적을 예정입니다.
 
 I'll write down the simple principles and sources for each technique.
@@ -42,17 +56,18 @@ I'll write down the simple principles and sources for each technique.
 
 We'll be using a total of five different techniques to create the image, and they are as follows
 
-- **Image Inpainting**을 통하여 기존 비디오에 있던 불완전한 영역을 자연스러운 영역으로 교체한다. 예를 들어, 시간 표시로 가려져 있는 영역 혹은 외곽 끝 부분의 부자연스러운 영역들을 제거하고 자연스러운 부분으로 교체 진행
+**1.** **Image Inpainting**을 통하여 기존 비디오에 있던 불완전한 영역을 자연스러운 영역으로 교체한다. 예를 들어, 시간 표시로 가려져 있는 영역 혹은 외곽 끝 부분의 부자연스러운 영역들을 제거하고 자연스러운 부분으로 교체 진행
   
-- **Image Deblurring**을 이용하여 옛날 카메라 기술의 부족으로 생긴 Blur한 Frame을 자연스럽게 처리해준다.
+**2.** **Image Deblurring**을 이용하여 옛날 카메라 기술의 부족으로 생긴 Blur한 Frame을 자연스럽게 처리해준다.
 
-- **Image Colorization**을 이용하여 흑백으로 표현되어 있던 Frame을 색감 처리를 진행한다.
+**3.** **Image Colorization**을 이용하여 흑백으로 표현되어 있던 Frame을 색감 처리를 진행한다.
 
-- **Super Resolution**을 이용하여 기존 화질 360X240의 영상에서 1280X720의 영상으로 교체한다.
+**4.** **Super Resolution**을 이용하여 기존 화질 360X240의 영상에서 1280X720의 영상으로 교체한다.
 
-- **Video Frame Interpolation**을 이용하여 기존 FPS 25 => FPS 50의 영상으로 제작한다.
+**5.** **Video Frame Interpolation**을 이용하여 기존 FPS 25 => FPS 50의 영상으로 제작한다.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<div align="center">
 
 ### <span style="color: #ff953e"> **Tech**
 
@@ -70,10 +85,15 @@ We'll be using a total of five different techniques to create the image, and the
 
 #### [Video Frame Interpolation](https://github.com/Go-MinSeong/VFI-with-AdaCoF)
 ##### SF-AdaCoF: Siamese Frane AdaCoF for Kernel based Video Frame Interpolation
+</div>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<div align="center">
+
 ## <span style="color: #ff953e"> **Result**
+
+</div>
 
 In this part, I'll show you the result of each process.
 The result image consists of a before(Left) and after(Right) image.
@@ -126,7 +146,12 @@ The result image consists of a before(Left) and after(Right) image.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+
+<div align="center">
+
 ## <span style="color: #ff953e"> **What needs improvement**
+
+</div>
 
 1.  현재, 다양한 Task 절차를 거치는데 이 Task간 순서에 따른 결과 실험이 필요할 것으로 보인다.  
 
