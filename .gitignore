@@ -13,6 +13,8 @@ frames_sub_after/
 frames_versus/
 frames_VFI/
 frames512/
+Uformer/datasets/
+Uformer/results/
 
 *.mp4
 *.pt
