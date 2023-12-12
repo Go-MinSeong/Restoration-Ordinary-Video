@@ -172,3 +172,8 @@ The result image consists of a before(Left) and after(Right) image.
 5.  GUI 형식으로, 전체적인 Process 구현 과정을 공부해보고자 한다. 또한, 각 model은 실행 환경이 다르며 이를 Docker를 통해 구현 가능한 통합 환경을 만들 예정이다.
 
     GUI format, we will study the entire Process implementation. In addition, each model has a different execution environment, and we will create a unified environment that can be implemented through Docker.
+
+
+
+
+print(hi)
