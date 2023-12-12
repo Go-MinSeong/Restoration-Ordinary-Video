@@ -134,8 +134,8 @@ The result image consists of a before(Left) and after(Right) image.
 ### <span style="color: #fff5b1"> **Video Frame Interpolation**
 
 <p float="center">
-  <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드before.gif" alt="Animated gif pacman game" height="240px" width="360px" />
-  <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드after.gif" alt="Animated gif pacman game" height="240px" width="360px" />
+  <img src="result/first_output.gif" alt="part of video" height="240px" width="360px" />
+
 </p>
 
 - Finally, We arrive last method, Video Frame Interpolation. The original video has 30FPS(frame per second). I know, 30FPS is not bad but I don't want moderate quality. Hence, I make a 60FPS video. Of course, I could make 90FPS, 120FPS but it is need a lot of memory.
@@ -169,11 +169,5 @@ The result image consists of a before(Left) and after(Right) image.
 
     In the Super Resolution Task, the inference time for each image was long, so we excluded the second stage (Stable Diffusion) part of the model. This will be applied in the future after improving the speed.
 <br/><br/>
-5.  GUI 형식으로, 전체적인 Process 구현 과정을 공부해보고자 한다. 또한, 각 model은 실행 환경이 다르며 이를 Docker를 통해 구현 가능한 통합 환경을 만들 예정이다.
-
-    GUI format, we will study the entire Process implementation. In addition, each model has a different execution environment, and we will create a unified environment that can be implemented through Docker.
-
-
-
-
-print(hi)
+5.  전제적인 프로세스 실행 방식을 정리해야 한다.
+    I need to clean all process to execute.
