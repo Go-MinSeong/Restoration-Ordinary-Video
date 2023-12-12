@@ -134,7 +134,7 @@ The result image consists of a before(Left) and after(Right) image.
 ### <span style="color: #fff5b1"> **Video Frame Interpolation**
 
 <p float="center">
-  <img src="result/first_output.gif" alt="part of video" height="240px" width="360px" />
+  <img src="result/result.gif" alt="part of video" height="240px" width="360px" />
 
 </p>
 
