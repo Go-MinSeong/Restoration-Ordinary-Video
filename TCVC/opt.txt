@@ -1,0 +1,18 @@
+test.py 2023-12-05 07:00:38
+------------ Options -------------
+batch_size: 8
+checkpoint_dir: ./stage1/checkpoints
+color_prior: [0.5, 0.5, 0.5, 0.5]
+data_root_val: /home/kms990321/DiffBIR/project/data/frames_color_before
+epoch: 40
+gpu_ids: 0,1
+ic: 4
+image_size: [360, 360]
+local_rank: 0
+resume_iter: 340000
+strict_load: True
+test_video_output_path: ./stage1_test_results
+test_video_size: [360, 360]
+video_size: [360, 360]
+workers: 4
+-------------- End ----------------
