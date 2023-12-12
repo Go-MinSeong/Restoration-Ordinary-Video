@@ -17,6 +17,13 @@ Uformer/datasets/
 Uformer/results/
 VCGAN/img/
 VFI-with-AdaCoF/gif
+ProPainter/inputs
+ProPainter/assets
+TCVC/stage1_test_results
+TCVC/stage2_test_results
+RVRT/testsets
+RVRT/assets
+MMP-RNN/MMP-RNN/experiment
 
 *.mp4
 *.pt
@@ -25,3 +32,4 @@ VFI-with-AdaCoF/gif
 *.pkl
 *.m4a
 *.zip
+*.ckpt
