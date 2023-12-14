@@ -23,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--task', type=str, default='006_RVRT_videodenoising_DAVIS_16frames', help='tasks: 001 to 006')
     parser.add_argument('--sigma', type=int, default=30, help='noise level for denoising: 10, 20, 30, 40, 50')
-    parser.add_argument('--folder_lq', type=str, default='/home/kms990321/DiffBIR/project/data/frame_deblur240',
+    parser.add_argument('--folder_lq', type=str, default='data/frame_deblur240',
                         help='input low-quality test video folder')
     parser.add_argument('--folder_gt', type=str, default=None,
                         help='input ground-truth test video folder')

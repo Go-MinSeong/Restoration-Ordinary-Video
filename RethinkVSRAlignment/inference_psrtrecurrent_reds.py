@@ -11,6 +11,7 @@ from basicsr.data.data_util import read_img_seq
 from basicsr.metrics import psnr_ssim
 from basicsr.utils import get_root_logger, get_time_str, imwrite, tensor2img
 from tqdm import tqdm
+import argparse
 
 def main():
     # -------------------- Configurations -------------------- #
@@ -21,15 +22,15 @@ def main():
     # set suitable value to make sure cuda not out of memory
     # interval = 30
     # model
-    model_path = '/home/kms990321/DiffBIR/project5/RethinkVSRAlignment/PSRT_REDS.pth'
+    model_path = 'PSRT_REDS.pth'
     # test data
     test_name = f'100_psrtrecurrent_16f'
 
     # lr_folder = 'datasets/REDS4/sharp_bicubic'
     # gt_folder = 'datasets/REDS4/GT'
-    lr_folder = '/home/kms990321/DiffBIR/project/data/frame_denoise'
-    gt_folder = '/home/kms990321/DiffBIR/project/data/frame_denoise'
-    save_folder = '/home/kms990321/DiffBIR/project/data/frame_super'
+    lr_folder = args.input_path
+    gt_folder = args.input_path
+    save_folder = args.output_path
     os.makedirs(save_folder, exist_ok=True)
 
     # logger
@@ -120,5 +121,10 @@ def main():
 
 
 if __name__ == '__main__':
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--input_path', type=str, default='', help='choose fuction.')
+    parser.add_argument(
+        '--output_path', type=str, default='', help='choose fuction.')
+    args = parser.parse_args()
     main()

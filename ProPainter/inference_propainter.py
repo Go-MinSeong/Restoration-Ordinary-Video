@@ -67,24 +67,24 @@ def sort_files_by_number(folder_path, duration):
 
 #  read frames from video
 def read_frame_from_videos(frame_root, duration):
-    if frame_root.endswith(('mp4', 'mov', 'avi', 'MP4', 'MOV', 'AVI')): # input video path
-        video_name = os.path.basename(frame_root)[:-4]
-        vframes, aframes, info = torchvision.io.read_video(filename=frame_root, pts_unit='sec') # RGB
-        frames = list(vframes.numpy())
-        frames = [Image.fromarray(f) for f in frames]
-        sorted_files = sort_files_by_number("/home/kms990321/DiffBIR/project/data/frames_tape/video_swin_unet/frames360", duration)
-        frames = load_images_from_folder("/home/kms990321/DiffBIR/project/data/frames_tape/video_swin_unet/frames360", sorted_files)
-        # fps = info['video_fps']
-        fps = 30
-    else:
-        video_name = os.path.basename(frame_root)
-        frames = []
-        fr_lst = sorted(os.listdir(frame_root))
-        for fr in fr_lst:
-            frame = cv2.imread(os.path.join(frame_root, fr))
-            frame = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-            frames.append(frame)
-        fps = None
+    # if frame_root.endswith(('mp4', 'mov', 'avi', 'MP4', 'MOV', 'AVI')): # input video path
+        # video_name = os.path.basename(frame_root)[:-4]
+        # vframes, aframes, info = torchvision.io.read_video(filename=frame_root, pts_unit='sec') # RGB
+        # frames = list(vframes.numpy())
+        # frames = [Image.fromarray(f) for f in frames]
+    sorted_files = sort_files_by_number(frame_root, duration)
+    frames = load_images_from_folder(frame_root, sorted_files)
+    # fps = info['video_fps']
+    fps = 30
+    # else:
+    #     video_name = os.path.basename(frame_root)
+    #     frames = []
+    #     fr_lst = sorted(os.listdir(frame_root))
+    #     for fr in fr_lst:
+    #         frame = cv2.imread(os.path.join(frame_root, fr))
+    #         frame = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    #         frames.append(frame)
+    #     fps = None
     size = frames[0].size
 
     return frames, fps, size, video_name
@@ -237,7 +237,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--fp16', action='store_true', help='Use fp16 (half precision) during inference. Default: fp32 (single precision).')
     parser.add_argument(
-        '--duration',nargs="+",  type=int, default=[0,60000])
+        '--duration',nargs="+",  type=int, default=[0,999999])
 
     args = parser.parse_args()
 
@@ -504,4 +504,4 @@ if __name__ == '__main__':
     torch.cuda.empty_cache()
 
 
-# python inference_propainter.py --video /home/kms990321/DiffBIR/project/data/frames_tape/video_swin_unet/output.mp4 --mask /home/kms990321/DiffBIR/project/data/frames_tape/video_swin_unetoutput_mask.png --duration [0,2000]
+# python inference_propainter.py --video [frame_path]
