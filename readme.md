@@ -145,6 +145,7 @@ The result image consists of a before(Left) and after(Right) image.
 
 </p>
 </div>
+
 - Finally, We arrive last method, Video Frame Interpolation. The original video has 30FPS(frame per second). I know, 30FPS is not bad but I don't want moderate quality. Hence, I make a 60FPS video. Of course, I could make 90FPS, 120FPS but it is need a lot of memory.
 - Expecially, This part is crucial for me. Because used VFI model is made by me. And so I cound't choose any other model in task. Additionally, most of all this project is planned to present for my parents. Then, I think that result by my own model is special for both me and my parents.
 - I show you part of the result through gif format above the paragraph.
@@ -406,7 +407,7 @@ cd ../
 <br/>
 
 **Video Deblurring**
-You have to amend "para.test_save_dir" in MMP-RNN/main.py
+You have to amend "**para.test_save_dir**" in MMP-RNN/main.py
 
 ```
 cd MMP-RNN
@@ -422,7 +423,7 @@ cd RVRT
 python main_test_rvrt.py --task 006_RVRT_videodenoising_DAVIS_16frames --sigma 10 --tile 16 160 160 --tile_overlap 2 20 20 --folder_lq [frame_path]
 cd ../
 ```
-"**sigma**"  degree of denoising and results may change depending on **tile**.
+"**sigma**"  degree of denoising and results may change depending on "**tile**".
 
 <br/>
 
@@ -464,4 +465,7 @@ cd ../
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### Reference
+### Acknowledgments
+
+
+Some codes are adapted from MAT, Uformer, DDColor, DiffBIR, SF-AdaCoF, TAPE, ProPainter, TCVC, MMP-RNN, RVRT, RethinkVSRAlignment. Thanks for their excellent work!
