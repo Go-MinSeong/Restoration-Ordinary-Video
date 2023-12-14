@@ -14,12 +14,11 @@ import numpy as np
 from os import path as osp
 from collections import OrderedDict
 from torch.utils.data import DataLoader
-
+from tqdm import tqdm
 from models.network_rvrt import RVRT as net
 from utils import utils_image as util
 from data.dataset_video_test import VideoRecurrentTestDataset, VideoTestVimeo90KDataset, SingleVideoRecurrentTestDataset
-# CUDA_VISIBLE_DEVICE=0 python main_test_rvrt.py --task 006_RVRT_videodenoising_DAVIS_16frames --sigma 20 --tile 0 256 256 --tile_overlap 2 20 20
-
+# CUDA_VISIBLE_DEVICES=1 python main_test_rvrt.py --task 006_RVRT_videodenoising_DAVIS_16frames --sigma 10 --tile 16 160 160 --tile_overlap 2 20 20
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--task', type=str, default='006_RVRT_videodenoising_DAVIS_16frames', help='tasks: 001 to 006')
@@ -54,7 +53,7 @@ def main():
 
     test_loader = DataLoader(dataset=test_set, num_workers=args.num_workers, batch_size=1, shuffle=False)
 
-    save_dir = "/home/kms990321/DiffBIR/project/data/frame_denoise"
+    save_dir = "/home/kms990321/DiffBIR/project/data/frame_denoise6"
     if args.save_result:
         os.makedirs(save_dir, exist_ok=True)
     test_results = OrderedDict()
@@ -65,10 +64,10 @@ def main():
 
     assert len(test_loader) != 0, f'No dataset found at {args.folder_lq}'
 
-    for idx, batch in enumerate(test_loader):
+    for idx, batch in tqdm(enumerate(test_loader)):
         lq = batch['L'].to(device)
         folder = batch['folder']
-        gt = batch['H'] if 'H' in batch else None
+        # gt = batch['H'] if 'H' in batch else None
 
         # inference
         with torch.no_grad():
@@ -78,11 +77,11 @@ def main():
             output = (output[:, 3:4, :, :, :] + output[:, 10:11, :, :, :]) / 2
             batch['lq_path'] = batch['gt_path']
 
-        test_results_folder = OrderedDict()
-        test_results_folder['psnr'] = []
-        test_results_folder['ssim'] = []
-        test_results_folder['psnr_y'] = []
-        test_results_folder['ssim_y'] = []
+        # test_results_folder = OrderedDict()
+        # test_results_folder['psnr'] = []
+        # test_results_folder['ssim'] = []
+        # test_results_folder['psnr_y'] = []
+        # test_results_folder['ssim_y'] = []
 
         for i in range(output.shape[1]):
             # save image
@@ -96,46 +95,46 @@ def main():
                 cv2.imwrite(f'{save_dir}/{folder[0]}/{seq_}.png', img)
 
             # evaluate psnr/ssim
-            if gt is not None:
-                img_gt = gt[:, i, ...].data.squeeze().float().cpu().clamp_(0, 1).numpy()
-                if img_gt.ndim == 3:
-                    img_gt = np.transpose(img_gt[[2, 1, 0], :, :], (1, 2, 0))  # CHW-RGB to HCW-BGR
-                img_gt = (img_gt * 255.0).round().astype(np.uint8)  # float32 to uint8
-                img_gt = np.squeeze(img_gt)
+        #     if gt is not None:
+        #         img_gt = gt[:, i, ...].data.squeeze().float().cpu().clamp_(0, 1).numpy()
+        #         if img_gt.ndim == 3:
+        #             img_gt = np.transpose(img_gt[[2, 1, 0], :, :], (1, 2, 0))  # CHW-RGB to HCW-BGR
+        #         img_gt = (img_gt * 255.0).round().astype(np.uint8)  # float32 to uint8
+        #         img_gt = np.squeeze(img_gt)
 
-                test_results_folder['psnr'].append(util.calculate_psnr(img, img_gt, border=0))
-                test_results_folder['ssim'].append(util.calculate_ssim(img, img_gt, border=0))
-                if img_gt.ndim == 3:  # RGB image
-                    img = util.bgr2ycbcr(img.astype(np.float32) / 255.) * 255.
-                    img_gt = util.bgr2ycbcr(img_gt.astype(np.float32) / 255.) * 255.
-                    test_results_folder['psnr_y'].append(util.calculate_psnr(img, img_gt, border=0))
-                    test_results_folder['ssim_y'].append(util.calculate_ssim(img, img_gt, border=0))
-                else:
-                    test_results_folder['psnr_y'] = test_results_folder['psnr']
-                    test_results_folder['ssim_y'] = test_results_folder['ssim']
+        #         test_results_folder['psnr'].append(util.calculate_psnr(img, img_gt, border=0))
+        #         test_results_folder['ssim'].append(util.calculate_ssim(img, img_gt, border=0))
+        #         if img_gt.ndim == 3:  # RGB image
+        #             img = util.bgr2ycbcr(img.astype(np.float32) / 255.) * 255.
+        #             img_gt = util.bgr2ycbcr(img_gt.astype(np.float32) / 255.) * 255.
+        #             test_results_folder['psnr_y'].append(util.calculate_psnr(img, img_gt, border=0))
+        #             test_results_folder['ssim_y'].append(util.calculate_ssim(img, img_gt, border=0))
+        #         else:
+        #             test_results_folder['psnr_y'] = test_results_folder['psnr']
+        #             test_results_folder['ssim_y'] = test_results_folder['ssim']
 
-        if gt is not None:
-            psnr = sum(test_results_folder['psnr']) / len(test_results_folder['psnr'])
-            ssim = sum(test_results_folder['ssim']) / len(test_results_folder['ssim'])
-            psnr_y = sum(test_results_folder['psnr_y']) / len(test_results_folder['psnr_y'])
-            ssim_y = sum(test_results_folder['ssim_y']) / len(test_results_folder['ssim_y'])
-            test_results['psnr'].append(psnr)
-            test_results['ssim'].append(ssim)
-            test_results['psnr_y'].append(psnr_y)
-            test_results['ssim_y'].append(ssim_y)
-            print('Testing {:20s} ({:2d}/{}) - PSNR: {:.2f} dB; SSIM: {:.4f}; PSNR_Y: {:.2f} dB; SSIM_Y: {:.4f}'.
-                      format(folder[0], idx, len(test_loader), psnr, ssim, psnr_y, ssim_y))
-        else:
-            print('Testing {:20s}  ({:2d}/{})'.format(folder[0], idx, len(test_loader)))
+        # if gt is not None:
+        #     psnr = sum(test_results_folder['psnr']) / len(test_results_folder['psnr'])
+        #     ssim = sum(test_results_folder['ssim']) / len(test_results_folder['ssim'])
+        #     psnr_y = sum(test_results_folder['psnr_y']) / len(test_results_folder['psnr_y'])
+        #     ssim_y = sum(test_results_folder['ssim_y']) / len(test_results_folder['ssim_y'])
+        #     test_results['psnr'].append(psnr)
+        #     test_results['ssim'].append(ssim)
+        #     test_results['psnr_y'].append(psnr_y)
+        #     test_results['ssim_y'].append(ssim_y)
+        #     print('Testing {:20s} ({:2d}/{}) - PSNR: {:.2f} dB; SSIM: {:.4f}; PSNR_Y: {:.2f} dB; SSIM_Y: {:.4f}'.
+        #               format(folder[0], idx, len(test_loader), psnr, ssim, psnr_y, ssim_y))
+        # else:
+        #     print('Testing {:20s}  ({:2d}/{})'.format(folder[0], idx, len(test_loader)))
 
     # summarize psnr/ssim
-    if gt is not None:
-        ave_psnr = sum(test_results['psnr']) / len(test_results['psnr'])
-        ave_ssim = sum(test_results['ssim']) / len(test_results['ssim'])
-        ave_psnr_y = sum(test_results['psnr_y']) / len(test_results['psnr_y'])
-        ave_ssim_y = sum(test_results['ssim_y']) / len(test_results['ssim_y'])
-        print('\n{} \n-- Average PSNR: {:.2f} dB; SSIM: {:.4f}; PSNR_Y: {:.2f} dB; SSIM_Y: {:.4f}'.
-              format(save_dir, ave_psnr, ave_ssim, ave_psnr_y, ave_ssim_y))
+    # if gt is not None:
+    #     ave_psnr = sum(test_results['psnr']) / len(test_results['psnr'])
+    #     ave_ssim = sum(test_results['ssim']) / len(test_results['ssim'])
+    #     ave_psnr_y = sum(test_results['psnr_y']) / len(test_results['psnr_y'])
+    #     ave_ssim_y = sum(test_results['ssim_y']) / len(test_results['ssim_y'])
+    #     print('\n{} \n-- Average PSNR: {:.2f} dB; SSIM: {:.4f}; PSNR_Y: {:.2f} dB; SSIM_Y: {:.4f}'.
+    #           format(save_dir, ave_psnr, ave_ssim, ave_psnr_y, ave_ssim_y))
 
 
 def prepare_model_dataset(args):
