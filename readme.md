@@ -360,20 +360,108 @@ The result image consists of a before(Left) and after(Right) image.
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ### Inference
-If you want to excute the process, follow this code. And you have to amend the condfig.yaml
+
+You can look into each project detail from authorship's repositiry.
+You can get a pretrained model from each authorship's repositiry.
+And there are some function to use the process in info.py, so refer this. 
+
+I made every project use easily from any images in folder.
+So I think you would imitate the process conveniently.
+
+<br/>
+
+If you only have a video that you want to convert, first of all you excute next code to seperate video to frames. There are more something like fps, resolution and so on that you can control. 
+
+```
+python main.py --task "video_to_frame" --video_path [] --frame_path []
+``` 
 <br/>
 
 **Analog Video Restoration**
 
+If you command this code, you would get restored frames.
+```
+sh analog-video-restoration/process.sh
+```
+<br/>
+
+**Video Outpainting**
+
+I set the code that increase 352 => 336 => 360, If you change this setting modify the code in inference_propainter.py
+```
+cd ProPainter
+python inference_propainter.py --video [frame_path]
+cd ../
+```
+<br/>
+
+**Video Colorization**
+
+```
+cd TCVC
+python stage1/test.py --data_root_val [frame_path] --test_video_output_path [output_path1]
+python stage2/test.py --test_path [frame_path] --ref_path [output_path1] --test_output_path [output_path2]
+cd ../
+```
+<br/>
+
+**Video Deblurring**
+You have to amend "para.test_save_dir" in MMP-RNN/main.py
+
+```
+cd MMP-RNN
+python MMP-RNN/main.py
+cd ../
+```
+<br/>
+
+**Video Denoising**
+
+```
+cd RVRT
+python main_test_rvrt.py --task 006_RVRT_videodenoising_DAVIS_16frames --sigma 10 --tile 16 160 160 --tile_overlap 2 20 20 --folder_lq [frame_path]
+cd ../
+```
+"**sigma**"  degree of denoising and results may change depending on **tile**.
+
+<br/>
+
+**Video SuperResolution**
+
+```
+cd RethinkVSRAlignment
+python inference_psrtrecurrent_reds.py --input_path [] --output_path []
+cd ../
 ```
 
+<br/>
 
+**Video FrameInterpolation**
+
+If you want to excute the process, follow this code. And you have to amend the SF-AdaCoF/condfig.yaml
 
 ```
+cd SF-AdaCoF
+interpolate_inference.py --repeat [int : count]
+cd ../
+```
 
-**repeat** means that how many interpolate you want? if you input 1 you can get twice frames or 2 you can get quintuple frames.
+"**repeat**" means that how many interpolate you want? if you input 1 you can get twice frames or 2 you can get quintuple frames.
 
+<br/>
+
+**Finally, you can see an awesome video.**
+
+<br/>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### impression
+
+### Impression
+
+
+<br/>
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+### Reference

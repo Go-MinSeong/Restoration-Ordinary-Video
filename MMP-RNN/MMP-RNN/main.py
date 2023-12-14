@@ -29,8 +29,8 @@ if __name__ == '__main__':
 
     # # test using existing checkpoint
     para.test_only = True
-    para.test_save_dir = '/home/kms990321/DiffBIR/project/data/frame_deblur'
-    para.test_checkpoint = '/home/kms990321/DiffBIR/project/MMP-RNN/MMP-RNN/model_best2.pth.tar'
+    para.test_save_dir = 'data/frame_deblur'
+    para.test_checkpoint = 'MMP-RNN/MMP-RNN/model_best2.pth.tar'
 
     trainer = Trainer(para)
     trainer.run()

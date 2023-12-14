@@ -58,7 +58,7 @@ def extract_frames(input_path, output_folder):
 
         # 비디오의 모든 프레임을 이미지로 저장
         for i, frame in enumerate(video_clip.iter_frames(fps=video_clip.fps)):
-            frame_path = os.path.join(frames_folder, f'frame_{i:04d}.png')
+            frame_path = os.path.join(frames_folder, f'{i:04d}.png')
             frame_img = Image.fromarray(frame)
             frame_img.save(frame_path)
 
@@ -192,4 +192,102 @@ def merge_random_images(folder1, folder2, output_folder, num_images=30):
 folder1 = "/home/kms990321/DiffBIR/project/frames_SR"
 folder2 = "/home/kms990321/DiffBIR/project/frames_SR2"
 output_folder = "/home/kms990321/DiffBIR/project/frames_versus"
-merge_random_images(folder1, folder2, output_folder)
+# merge_random_images(folder1, folder2, output_folder)
+
+
+def copy_and_rename_png_files(source_folder, destination_folder, suffix='_new'):
+    # 대상 폴더가 존재하지 않으면 생성
+    os.makedirs(destination_folder, exist_ok=True)
+
+    # source 폴더에 있는 모든 PNG 파일 찾기
+    for root, _, files in os.walk(source_folder):
+        for file in tqdm(files):
+            if file.lower().endswith('.png'):
+                source_path = os.path.join(root, file)
+
+                # 파일 이름 수정 (여기서는 파일 확장자 앞에 suffix를 추가하는 예제)
+                num = int(os.path.splitext(file)[0][1:]) + 2263
+                new_name = f"{num:04d}.png"
+                
+                # 파일 복사
+                destination_path = os.path.join(destination_folder, new_name)
+                shutil.copy2(source_path, destination_path)
+
+source_folder = "/home/kms990321/DiffBIR/project/TCVC/stage2_test_results/1"
+destination_folder = "/home/kms990321/DiffBIR/project/data/frames_color_after"
+
+# copy_and_rename_png_files(source_folder, destination_folder)
+
+
+from pathlib import Path
+
+def distribute_images_to_folders_by_count(source_folder, destination_parent_folder, images_per_folder):
+    # source_folder: 이미지가 있는 폴더
+    # destination_parent_folder: 하위 폴더들을 포함하는 상위 폴더
+    # images_per_folder: 각 폴더당 이동시킬 이미지 개수
+
+    # source_folder 내의 이미지 파일 목록 얻기
+    image_files = [f for f in os.listdir(source_folder) if f.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    image_files = sorted(image_files, key=lambda x: int(x.split(".")[0]))
+
+    # 이미지 파일 개수 세기
+    num_images = len(image_files)
+
+    # 폴더 개수 계산
+    num_folders = (num_images + images_per_folder - 1) // images_per_folder
+
+    # destination_parent_folder가 없다면 생성
+    if not os.path.exists(destination_parent_folder):
+        os.makedirs(destination_parent_folder)
+
+    # 이미지를 각 폴더에 차례대로 이동
+    for i in range(num_folders):
+        subfolder_name = f"subfolder_{i+1}"
+        subfolder_path = os.path.join(destination_parent_folder, subfolder_name)
+
+        # 하위 폴더가 없다면 생성
+        if not os.path.exists(subfolder_path):
+            os.makedirs(subfolder_path)
+
+        start_index = i * images_per_folder
+        end_index = min((i + 1) * images_per_folder, num_images)
+
+        for j in range(start_index, end_index):
+            image = image_files[j]
+            source_path = os.path.join(source_folder, image)
+            destination_path = os.path.join(subfolder_path, image)
+            shutil.move(source_path, destination_path)
+            print(f"{image} 이동 완료 -> {subfolder_path}")
+
+# 사용 예제
+source_folder = '/home/kms990321/DiffBIR/project/data/frame_deblur240'  # 실제 폴더 경로로 변경
+destination_parent_folder = '/home/kms990321/DiffBIR/project/data/frame_deblur240'  # 실제 폴더 경로로 변경
+images_per_folder = 128  # 각 폴더당 이동시킬 이미지 개수
+
+# distribute_images_to_folders_by_count(source_folder, destination_parent_folder, images_per_folder)
+
+def move_images_from_subfolders(source_parent_folder, destination_folder):
+    # source_parent_folder: 이미지가 있는 하위 폴더들을 포함하는 상위 폴더
+    # destination_folder: 이미지를 이동시킬 폴더
+
+    # source_parent_folder 내의 모든 하위 폴더 얻기
+    subfolders = [f.path for f in os.scandir(source_parent_folder) if f.is_dir()]
+
+    # destination_folder가 없다면 생성
+    if not os.path.exists(destination_folder):
+        os.makedirs(destination_folder)
+
+    # 각 하위 폴더의 이미지를 상위 폴더로 이동
+    for subfolder in subfolders:
+        image_files = [f for f in os.listdir(subfolder) if f.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+        for image in image_files:
+            source_path = os.path.join(subfolder, image)
+            destination_path = os.path.join(destination_folder, image)
+            shutil.move(source_path, destination_path)
+            print(f"{image} 이동 완료 -> {destination_folder}")
+
+# 사용 예제
+source_parent_folder = '/home/kms990321/DiffBIR/project/data/frame_deblur240'  # 실제 상위 폴더 경로로 변경
+destination_folder = '/home/kms990321/DiffBIR/project/data/frame_deblur240'  # 실제 폴더 경로로 변경
+
+# move_images_from_subfolders(source_parent_folder, destination_folder)
