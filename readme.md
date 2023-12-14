@@ -117,7 +117,7 @@ The result image consists of a before(Left) and after(Right) image.
 ![stronghold logo](frames_versus_instance/deblurring.png)
 
 - Left image is original images the other one is deblurred image. I guess that My parents wedding video was shot by one person walking around. So for most images, the blurring exists. To solve this problem,  I utilize deblurring technique.
-- For example, I've highlighted the flowerpot in the image. You can see clearer image on the right side.
+- For example, I've highlighted the flowerpot at the image. You can see clearer image on the right side.
 - Before applying this method, In fact, I want to deblurr for human. But it doesn't not work well. I'm looking forward to solving this problem.
 
 ### <span style="color: #fff5b1"> **Image Colorization**
@@ -299,19 +299,81 @@ The result image consists of a before(Left) and after(Right) image.
 
 ![stronghold logo](frames_versus_instance/outpainting.png)
 </div>
-- The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
-- Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
-- Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
 
-### <span style="color: 6495ED"> **Video Outpainting**
+- The image was cut by the previous method. And, every edges at the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
+- Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
+- Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge at the image that was predicted by AI.
+
+### <span style="color: 6495ED"> **Video Colorization**
 <div align="center">
 
 <p float="center">
   <img src="result/black.gif" alt="blacked video " height="240px" width="360px" />
   <img src="result/color.gif" alt="colored video" height="240px" width="360px" />
 </p>
-
 </div>
-- The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
-- Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
-- Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
+
+- To tell you the truth, Image Colorization, existing method that I used has big problem. It was that each frame was good, but it became a video, it was weird. So, I used Video Colorization, not Image Colorization.
+- Finally, I think that I get a proper video that satisfied both me and my parents.
+
+### <span style="color: 6495ED"> **Video Deblurring**
+<div align="center">
+
+![stronghold logo](frames_versus_instance/deblur.png)
+</div>
+
+- The video was taken by person, so there are some shaky.
+- At the left image, there are many blurr that make me don't reconize them as my parents.
+- Absoulutely, It is joke but right image is better than left one surely.
+
+### <span style="color: 6495ED"> **Video Denoising**
+<div align="center">
+
+![stronghold logo](frames_versus_instance/denoising.png)
+</div>
+
+- As you may already see, at the left image, there are some noisy like dot. So, I apply denoising method.
+- Then, at the right image, there are little noisy.
+
+
+### <span style="color: 6495ED"> **Video SuperResolution**
+<div align="center">
+
+![stronghold logo](frames_versus_instance/.png)
+</div>
+
+- 
+
+
+### <span style="color: 6495ED"> **Video FrameInterpolation**
+<div align="center">
+
+<p float="center">
+  <img src="result/.gif" alt="blacked video " height="240px" width="360px" />
+  <img src="result/.gif" alt="colored video" height="240px" width="360px" />
+</p>
+</div>
+
+- 
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+### Inference
+If you want to excute the process, follow this code. And you have to amend the condfig.yaml
+<br/>
+
+**Analog Video Restoration**
+
+```
+
+
+
+```
+
+**repeat** means that how many interpolate you want? if you input 1 you can get twice frames or 2 you can get quintuple frames.
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+### impression
