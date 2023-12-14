@@ -283,8 +283,11 @@ In this part, I'll show you the result of each process.
 The result image consists of a before(Left) and after(Right) image.
 
 ### <span style="color: 6495ED"> **Analog Video Restoration**
+<div align="center">
 
 ![stronghold logo](frames_versus_instance/video_restoration.png)
+
+</div>
 
 - Left image is original images the other one is restorated image. My parents's wedding video is ordinary video. So, It is a analog tape. Therefore I apply restoration method for analog video. Analog Video Restoration is technique that enhances analog video in many aspects. Such as this picture, you can see more distinct color in right one than left one. 
   
@@ -292,20 +295,23 @@ The result image consists of a before(Left) and after(Right) image.
 
 
 ### <span style="color: 6495ED"> **Video Outpainting**
+<div align="center">
 
 ![stronghold logo](frames_versus_instance/outpainting.png)
-
+</div>
 - The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
 - Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
 - Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
 
 ### <span style="color: 6495ED"> **Video Outpainting**
+<div align="center">
 
 <p float="center">
   <img src="result/black.gif" alt="blacked video " height="240px" width="360px" />
   <img src="result/color.gif" alt="colored video" height="240px" width="360px" />
 </p>
 
+</div>
 - The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
 - Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
 - Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
