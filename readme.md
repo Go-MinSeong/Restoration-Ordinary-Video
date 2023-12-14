@@ -282,8 +282,30 @@ We'll be using a total of seven different techniques to create the image, and th
 In this part, I'll show you the result of each process.
 The result image consists of a before(Left) and after(Right) image.
 
-### <span style="color: 6495ED"> **Image Inpainting**
+### <span style="color: 6495ED"> **Analog Video Restoration**
 
-![stronghold logo](frames_versus_instance/inpainting.png)
+![stronghold logo](frames_versus_instance/video_restoration.png)
 
-- Left image is original images the other one is inpainted image. I use inpainting technique for fill in the ends of the four sides. For instance, you can see blur region and black region in left image. But there is not a awkward region anywhere in right one. 
+- Left image is original images the other one is restorated image. My parents's wedding video is ordinary video. So, It is a analog tape. Therefore I apply restoration method for analog video. Analog Video Restoration is technique that enhances analog video in many aspects. Such as this picture, you can see more distinct color in right one than left one. 
+  
+- Noise at lower part of the image is disappeared. Is is not caused by Analog Video Restoration. It was just cut by model process.
+
+
+### <span style="color: 6495ED"> **Video Outpainting**
+
+![stronghold logo](frames_versus_instance/outpainting.png)
+
+- The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
+- Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
+- Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
+
+### <span style="color: 6495ED"> **Video Outpainting**
+
+<p float="center">
+  <img src="result/black.gif" alt="blacked video " height="240px" width="360px" />
+  <img src="result/color.gif" alt="colored video" height="240px" width="360px" />
+</p>
+
+- The image was cut by the previous method. And, every edges in the images has some noise. So, I want to increase the image to original size ( 352 X 352 => 360 X 360 ) and remove the noise at the same time.
+- Inpainting that I was used and Outpainting that I'm using are little different. But they has same principle. Inpainting targets to fill the inside of image. On the other side Outpainting targets to fill outside of image.
+- Long story short, I delete every edges of the image and expand image. Therefore, you would see some blur edge in the image that was predicted by AI.
