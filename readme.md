@@ -465,7 +465,107 @@ cd ../
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### Acknowledgments
+### Acknowledgments & Reference
 
 
 Some codes are adapted from MAT, Uformer, DDColor, DiffBIR, SF-AdaCoF, TAPE, ProPainter, TCVC, MMP-RNN, RVRT, RethinkVSRAlignment. Thanks for their excellent work!
+
+```
+@inproceedings{li2022mat,
+    title={MAT: Mask-Aware Transformer for Large Hole Image Inpainting},
+    author={Li, Wenbo and Lin, Zhe and Zhou, Kun and Qi, Lu and Wang, Yi and Jia, Jiaya},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    year={2022}
+}
+```
+
+```
+@InProceedings{Wang_2022_CVPR,
+    author    = {Wang, Zhendong and Cun, Xiaodong and Bao, Jianmin and Zhou, Wengang and Liu, Jianzhuang and Li, Houqiang},
+    title     = {Uformer: A General U-Shaped Transformer for Image Restoration},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2022},
+    pages     = {17683-17693}
+}
+```
+
+```
+@article{kang2022ddcolor,
+  title={DDColor: Towards Photo-Realistic Image Colorization via Dual Decoders},
+  author={Kang, Xiaoyang and Yang, Tao and Ouyang, Wenqi and Ren, Peiran and Li, Lingzhi and Xie, Xuansong},
+  journal={arXiv preprint arXiv:2212.11613},
+  year={2022}
+}
+```
+
+```@article{2023diffbir,
+  author    = {Xinqi Lin, Jingwen He, Ziyan Chen, Zhaoyang Lyu, Ben Fei, Bo Dai, Wanli Ouyang, Yu Qiao, Chao Dong},
+  title     = {DiffBIR: Towards Blind Image Restoration with Generative Diffusion Prior},
+  journal   = {arxiv},
+  year      = {2023},
+}
+```
+
+```@inproceedings{10.1145/3503161.3547730,
+  author = {Agnolucci, Lorenzo and Galteri, Leonardo and Bertini, Marco and Del Bimbo, Alberto},
+  title = {Restoration of Analog Videos Using Swin-UNet},
+  year = {2022},
+  isbn = {9781450392037},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3503161.3547730},
+  doi = {10.1145/3503161.3547730},
+  abstract = {In this paper we present a system to restore analog videos of historical archives. These videos often contain severe visual degradation due to the deterioration of their tape supports that require costly and slow manual interventions to recover the original content. The proposed system uses a multi-frame approach and is able to deal also with severe tape mistracking, which results in completely scrambled frames. Tests on real-world videos from a major historical video archive show the effectiveness of our demo system.},
+  booktitle = {Proceedings of the 30th ACM International Conference on Multimedia},
+  pages = {6985–6987},
+  numpages = {3},
+  keywords = {old videos restoration, analog videos, unet, swin transformer},
+  location = {Lisboa, Portugal},
+  series = {MM '22}
+}
+```
+
+
+```@inproceedings{zhou2023propainter,
+   title={{ProPainter}: Improving Propagation and Transformer for Video Inpainting},
+   author={Zhou, Shangchen and Li, Chongyi and Chan, Kelvin C.K and Loy, Chen Change},
+   booktitle={Proceedings of IEEE International Conference on Computer Vision (ICCV)},
+   year={2023}
+}
+```
+
+```
+@article{liu2021temporally,
+  title={Temporally Consistent Video Colorization with Deep Feature Propagation and Self-regularization Learning},
+  author={Liu, Yihao and Zhao, Hengyuan and Chan, Kelvin CK and Wang, Xintao and Loy, Chen Change and Qiao, Yu and Dong, Chao},
+  journal={arXiv preprint arXiv:2110.04562},
+  year={2021}
+}
+```
+
+```@inproceedings{wang2022MMP,
+  title={Efficient Video Deblurring Guided by Motion Magnitude},
+  author={Wang, Yusheng and Lu, Yunfan and Gao, Ye and Wang, Lin and Zhong, Zhihang and Zheng, Yinqiang and Yamashita, Atsushi},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  year={2022}
+}
+```
+
+
+```@article{liang2022rvrt,
+    title={Recurrent Video Restoration Transformer with Guided Deformable Attention},
+    author={Liang, Jingyun and Fan, Yuchen and Xiang, Xiaoyu and Ranjan, Rakesh and Ilg, Eddy  and Green, Simon and Cao, Jiezhang and Zhang, Kai and Timofte, Radu and Van Gool, Luc},
+    journal={arXiv preprint arXiv:2206.02146},
+    year={2022}
+}
+```
+
+
+```@article{shi2022rethinking,
+  title={Rethinking Alignment in Video Super-Resolution Transformers},
+  author={Shi, Shuwei and Gu, Jinjin and Xie, Liangbin and Wang, Xintao and Yang, Yujiu and Dong, Chao},
+  journal={arXiv preprint arXiv:2207.08494},
+  year={2022}
+}
+```
