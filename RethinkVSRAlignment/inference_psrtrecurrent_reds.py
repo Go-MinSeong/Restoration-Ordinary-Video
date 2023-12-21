@@ -60,7 +60,7 @@ def main():
 
     # for each subfolder
     subfolder_names = []
-    for subfolder in tqdm(subfolder_l):
+    for subfolder in tqdm(subfolder_l[70:]):
         print(subfolder)
         subfolder_name = osp.basename(subfolder)
         subfolder_names.append(subfolder_name)
