@@ -340,7 +340,7 @@ The result image consists of a before(Left) and after(Right) image.
 ### <span style="color: 6495ED"> **Video SuperResolution**
 <div align="center">
 
-![stronghold logo](frames_versus_instance/.png)
+![stronghold logo](frames_versus_instance/super.png)
 </div>
 
 - 
