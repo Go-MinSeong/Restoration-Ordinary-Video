@@ -343,7 +343,9 @@ The result image consists of a before(Left) and after(Right) image.
 ![stronghold logo](frames_versus_instance/super.png)
 </div>
 
-- 
+- At the left image, I just resize the image through opencv and the other one is applied by Super Resolution
+- I quadruple in image's size. (360 X 240 => 1440 X 960)
+- Most image has improved quality. You can see the difference.
 
 
 ### <span style="color: 6495ED"> **Video FrameInterpolation**
