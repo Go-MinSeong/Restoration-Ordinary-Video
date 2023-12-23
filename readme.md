@@ -357,7 +357,7 @@ The result image consists of a before(Left) and after(Right) image.
 </p>
 </div>
 
-- 
+**- Progressing**
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
@@ -461,7 +461,7 @@ cd ../
 
 
 ### Impression
-
+If the project was finished, I'll write this.
 
 <br/>
 
