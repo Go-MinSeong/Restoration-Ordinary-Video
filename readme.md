@@ -352,12 +352,18 @@ The result image consists of a before(Left) and after(Right) image.
 <div align="center">
 
 <p float="center">
-  <img src="result/.gif" alt="blacked video " height="240px" width="360px" />
-  <img src="result/.gif" alt="colored video" height="240px" width="360px" />
+  <img src="result/before.gif" alt="before video " height="240px" width="360px" />
+  <img src="result/after.gif" alt="after video" height="240px" width="360px" />
 </p>
 </div>
 
-**- Progressing**
+
+- Now, I made a final version. I really want to show the whole video but, It contains a lot of privacy imformation, so I can't.
+- In this chapter, I did video frame interpolation that generate 60fps video from 30fps.
+- In fact, 30fps and 60fps has just small differences. But, I want to make a luxury video so I did it. 
+- And, I want to show the result of this project. then, the left video is original video that any techniques weren't added.
+- As you may already see it, the right video is better than left.
+
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
@@ -461,7 +467,12 @@ cd ../
 
 
 ### Impression
-If the project was finished, I'll write this.
+
+#### I want to present the restorated wedding video for my parent's wedding anniversary. So I did this project. I think that the result of this project is not bad. Then, If you have some video that you want to apply these technique, just try it. I made the project to apply easily, if you just have a video. Because I was too. 
+#### I learned about various video AI technique and get some confidence that I use any AI model during doing this project. Most of all, I'm impressed that I can do something from knowledge that I learned until now. 
+#### Yeah, Absoulutely, there are some advancement. For instance, After denoising, some fine featurese are disappeared like wrinkles in face and clothes. 
+#### Disappointing thing is that I just utilize code from the other github without understanding. So, when I was doing this project, I was wondering about the princeple. Maybe, I'll review the paper that I use. And if I have any chance to train the model directly, I want it.
+
 
 <br/>
 
