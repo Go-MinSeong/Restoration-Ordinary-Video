@@ -467,10 +467,13 @@ cd ../
 
 ### Impression
 
-#### I want to present the restorated wedding video for my parent's wedding anniversary. So I did this project. I think that the result of this project is not bad. Then, If you have some video that you want to apply these technique, just try it. I made the project to apply easily, if you just have a video. Because I was too. 
-#### I learned about various video AI technique and get some confidence that I use any AI model during doing this project. Most of all, I'm impressed that I can do something from knowledge that I learned until now. 
-#### Yeah, Absoulutely, there are some advancement. For instance, After denoising, some fine featurese are disappeared like wrinkles in face and clothes. 
-#### Disappointing thing is that I just utilize code from the other github without understanding. So, when I was doing this project, I was wondering about the princeple. Maybe, I'll review the paper that I use. And if I have any chance to train the model directly, I want it.
+  I want to present the restorated wedding video for my parent's wedding anniversary. So I did this project. I think that the result of this project is not bad. Then, If you have some video that you want to apply these technique, just try it. I made the project to apply easily, if you just have a video. Because I was too. 
+
+  I learned about various video AI technique and get some confidence that I use any AI model during doing this project. Most of all, I'm impressed that I can do something from knowledge that I learned until now. 
+
+  Yeah, Absoulutely, there are some advancement. For instance, After denoising, some fine featurese are disappeared like wrinkles in face and clothes. 
+  
+  Disappointing thing is that I just utilize code from the other github without understanding. So, when I was doing this project, I was wondering about the princeple. Maybe, I'll review the paper that I use. And if I have any chance to train the model directly, I want it.
 
 <br/>
 
