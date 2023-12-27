@@ -357,6 +357,7 @@ The result image consists of a before(Left) and after(Right) image.
 </p>
 </div>
 
+
 - Now, I made a final version. I really want to show the whole video but, It contains a lot of privacy imformation, so I can't.
 - In this chapter, I did video frame interpolation that generate 60fps video from 30fps.
 - In fact, 30fps and 60fps has just small differences. But, I want to make a luxury video so I did it. 
@@ -471,6 +472,7 @@ cd ../
 #### I learned about various video AI technique and get some confidence that I use any AI model during doing this project. Most of all, I'm impressed that I can do something from knowledge that I learned until now. 
 #### Yeah, Absoulutely, there are some advancement. For instance, After denoising, some fine featurese are disappeared like wrinkles in face and clothes. 
 #### Disappointing thing is that I just utilize code from the other github without understanding. So, when I was doing this project, I was wondering about the princeple. Maybe, I'll review the paper that I use. And if I have any chance to train the model directly, I want it.
+
 
 <br/>
 
